@@ -23,9 +23,19 @@ export const useUser = () => {
   const addUser = (data) => {
     dispatch(updateUsers([data, ...users]));
   };
+
+  const removeUser = (name) => {
+    const filteredUser = users?.filter(
+      (item) =>
+        name !=
+        item?.firstName?.toLowerCase?.() + item?.lastName?.toLowerCase?.()
+    );
+    dispatch(updateUsers([...filteredUser]));
+  };
   return {
     users,
     getUsers,
     addUser,
+    removeUser,
   };
 };

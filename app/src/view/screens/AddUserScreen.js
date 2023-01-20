@@ -85,6 +85,7 @@ export const AddUserScreen = ({ route, navigation }) => {
               />
 
               <Input
+                keyboardType="numeric"
                 label="Age"
                 placeholder="Enter last name"
                 value={values.age}
@@ -101,6 +102,7 @@ export const AddUserScreen = ({ route, navigation }) => {
                 onBlur={() => setFieldTouched("address", true)}
               />
               <Input
+                keyboardType="numeric"
                 label="PostalCode"
                 placeholder="Enter Postal Code"
                 value={values.postalCode}

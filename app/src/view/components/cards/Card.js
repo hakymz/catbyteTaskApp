@@ -1,10 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Image, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { COLORS } from "../../../conts";
-import { Text } from "../general";
+import { useUser } from "../../../hooks";
+import { Image, Text } from "../general";
 const Card = ({ item, children, style, ...props }) => {
   const navigation = useNavigation();
+  const { removeUser } = useUser();
+
   return (
     <TouchableOpacity
       onPress={() => {
@@ -26,6 +30,19 @@ const Card = ({ item, children, style, ...props }) => {
       }}
       {...props}
     >
+      <View style={{ position: "absolute", top: 0, right: 10, top: 10 }}>
+        <Icon
+          onPress={() => {
+            removeUser(
+              item?.firstName?.toLowerCase?.() + item?.lastName?.toLowerCase?.()
+            );
+          }}
+          size={20}
+          name="close"
+          color={COLORS.red}
+        />
+      </View>
+
       <Image
         style={{ height: "100%", width: "100%" }}
         source={{ uri: item?.image }}
